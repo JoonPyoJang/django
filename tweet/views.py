@@ -14,8 +14,7 @@ def home(request):
         return redirect('/sign-in')
 
 def tweet(request):
-    print(request.method)
-    
+
     if request.method == 'GET':
         user = request.user.is_authenticated
         if user:
@@ -37,6 +36,12 @@ def delete_tweet(request, id):
     my_tweet = TweetModel.objects.get(id = id)
     my_tweet.delete()
     return redirect('/tweet')
+
+
+def tweet_detail(request, id):
+    return render(request, 'tweet/tweet_detail.html')
+
+
     
     
     
