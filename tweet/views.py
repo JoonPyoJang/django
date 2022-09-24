@@ -37,9 +37,12 @@ def delete_tweet(request, id):
     my_tweet.delete()
     return redirect('/tweet')
 
-
 def tweet_detail(request, id):
-    return render(request, 'tweet/tweet_detail.html')
+    if request.method == 'GET':
+        tweet_message = TweetModel.objects.get(id = id)
+        return render(request, 'tweet/tweet_detail.html',{'tweet' : tweet_message})
+    else:
+        return render(request, 'tweet/tweet_detail.html')
 
 
     

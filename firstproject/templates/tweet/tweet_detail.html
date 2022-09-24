@@ -35,7 +35,8 @@
                                         <h5 class="mt-0">{{ tweet.content }}</h5>
                                     </div>
                                     <div style="text-align: right">
-                                        <span style="font-size: small">{{ tweet.author.username }}-{{ tweet.created_at|timesince }} 전</span>
+                                        <span style="font-size: small">작성자 : {{ tweet.author.username }} 작성 시간 : {{ tweet.created_at|timesince }} 전</span>
+                
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +51,7 @@
                 </form>
                 <hr>
                 <!-- 반복문이 들어 갈 곳 -->
-								{% for cm in comment %}
+                            {% for cm in comment %}
                     <div class="row">
                         <div class="col-md-12">
                             <div class="media">
