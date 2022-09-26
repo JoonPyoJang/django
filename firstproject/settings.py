@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'firstproject',
     'tweet',
     'user',
+    
+    #many to many 테스트 앱 생성
+    'restaurant',
 ]
 
 MIDDLEWARE = [

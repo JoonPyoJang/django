@@ -61,7 +61,6 @@ def tweet_detail(request, id):
 def delete_comment(request, id):
     my_comment = TweetComment.objects.get(id = id)
     comment_id = my_comment.tweet_id
-    print(comment_id)
     my_comment.delete()
     return redirect('/tweet/tweet_detail/'+str(comment_id))
 

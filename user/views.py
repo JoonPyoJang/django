@@ -63,3 +63,31 @@ def sign_in_view(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+
+@login_required
+def user_view(request):
+    if request.method == 'GET':
+        # 사용자를 불러오기, exclude와 request.user.username 를 사용해서 '로그인 한 사용자'를 제외하기
+        user_list = UserModel.objects.all().exclude(username=request.user.username)
+        #exclude = 해당하는 데이터에서 어떤 데이터를 빼겠다. 즉 나를 제외한 사용자 리스트
+        return render(request, 'user/user_list.html', {'user_list': user_list})
+
+
+@login_required
+def user_follow(request, id):
+    me = request.user
+    click_user = UserModel.objects.get(id=id)
+    #click_user = 내가 방금 누른 사람
+
+    if me in click_user.followee.all():
+        #그 사람을 팔로우 하는 모두 내가 팔로우를 했는지 안했는지
+
+        click_user.followee.remove(request.user)
+        #팔로우에 있다면 팔로우에서 지우기
+
+    else:
+
+        click_user.followee.add(request.user)
+        #팔로우에 추가
+    return redirect('/user')
