@@ -37,13 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'taggit.apps.TaggitAppConfig',
+    'taggit_templatetags2',
+
     'firstproject',
     'tweet',
     'user',
-    
+
     #many to many 테스트 앱 생성
     'restaurant',
 ]
+
+TAGGIT_CASE_INSENSITIVE = True
+TAGGIT_LIMIT = 50
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
